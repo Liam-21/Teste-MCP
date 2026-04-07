@@ -8,6 +8,7 @@ mcp = FastMCP("webscraper_server")
 
 BASE_DIR = Path(__file__).parent.resolve()
 MANIFEST_FILE = BASE_DIR / "manifest.json"
+manager = ResearchManager(anyio.Path(MANIFEST_FILE))
 
 @mcp.tool()
 async def postData(data: dict):
@@ -17,7 +18,7 @@ async def postData(data: dict):
         url: The path for the endpoint to post,
         data: A dictionary with some data to simulate a post request in httbin.org
     """
-    return await ResearchManager.postData(data)
+    return await manager.postData(data)
 
 @mcp.tool()
 async def getURLInfo(url: str):
@@ -26,7 +27,6 @@ async def getURLInfo(url: str):
     Args:
         url: The url to get the info of
     """
-    manager = ResearchManager(anyio.Path(MANIFEST_FILE))
     return await manager.getURLInfo(url)
 
 @mcp.resource("research://manifest")
