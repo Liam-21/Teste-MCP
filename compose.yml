@@ -1,0 +1,15 @@
+services:
+  webscraper:
+    build:
+      context: .     
+      dockerfile: docker/Dockerfile
+    container_name: mcp_webscraper_container
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/app
+      - /app/.venv
+    environment:
+      - PYTHONUNBUFFERED=1
+    stdin_open: true
+    tty: true

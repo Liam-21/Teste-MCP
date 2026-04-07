@@ -48,4 +48,4 @@ ENV UV_NO_DEV=1
 WORKDIR /app
 RUN uv sync --locked
 
-CMD ["uv", "run", "webScraper_server.py"]
+CMD ["uv", "run", "webscraper_server.py"]
