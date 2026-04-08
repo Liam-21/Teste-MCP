@@ -1,8 +1,5 @@
-from src.webscraper.common.webScraper import ResearchManager
+from common.config import MANIFEST_FILE
 import anyio
-
-MANIFEST_FILE = "/app/src/webscraper/common/manifest.json"
-manager = ResearchManager(anyio.Path(MANIFEST_FILE))
 
 def register_resources(mcp):
     @mcp.resource("research://manifest")

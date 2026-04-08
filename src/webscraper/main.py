@@ -1,10 +1,9 @@
 from mcp.server.fastmcp import FastMCP
-from src.webscraper.common.webScraper import ResearchManager
 
 mcp = FastMCP("webscraper_server")
 
-from webscraper.resources.resources import register_resources
-from webscraper.tools.tools import register_tools
+from resources.resources import register_resources
+from tools.tools import register_tools
 
 register_resources(mcp)
 register_tools(mcp)

@@ -27,7 +27,7 @@ class ResearchManager:
             url_encoding:str = r.encoding
             url_status_code:int = r.status_code
 
-            # Verifica se a página tem conteúdo (se o statusCode é diferenteF de 204: No Content, e se o tipo do conteúdo começa por applications/json, para saber se podemos obter o conteúdo através de um r.json(), ou se temos que usar .text
+            # Verifica se a página tem conteúdo (se o statusCode é diferente de 204: No Content, e se o tipo do conteúdo começa por applications/json, para saber se podemos obter o conteúdo através de um r.json(), ou se temos que usar .text
             if ( url_status_code != 204 and r.headers["content-type"].strip().startswith("application/json")):
                 url_content:str = r.json()
             else: 
