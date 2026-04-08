@@ -46,9 +46,7 @@ class ResearchManager:
             return info_json
         else:
             return "That URL is not allowed"
-        
-        
-    ## Cuidado! Aqui estou só a encapsular algo que já está encapsulado. Ver isto, porque não é boa prática criar uma classe e ter métodos que simplesmente usam um método da biblioteca.
+                
     async def post_data(self, data: dict) -> str:
         r: str = httpx.post(self.manifest["post_endpoint"], data = data)
         return r.text     
