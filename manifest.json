@@ -1,4 +1,0 @@
-{
-    "trustedDomains": ["https://python.org", "https://wikipedia.org", "https://www.marvel.com/characters/jeff-the-land-shark", "https://www.marvelrivals.com/heroes/index.html?id=deb6b426-c97e-4449-b345-4d7131336a64"],
-    "post_endpoint": "https://httpbin.org/post"
-}
