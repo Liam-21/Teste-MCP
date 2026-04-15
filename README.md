@@ -12,6 +12,57 @@ It is going to run the command:
 
 Use `docker compose down` to stop and remove containers created.
 
+## Claude Desktop MCP Integration
+
+To test this MCP I am using **Claude Desktop**. Below is a walkthrough for the setup, or you can refer to the [official MCP documentation](https://modelcontextprotocol.io/docs/develop/connect-local-servers).
+
+### Prerequisites
+
+Please ensure you have **Claude Desktop** and **Node.js** installed on your machine:
+
+* [Claude Desktop Download Link](https://claude.com/download)
+* [Node.js Download Link](https://nodejs.org/)
+
+---
+
+### Installing and Configuring the Server
+
+This process will configure Claude Desktop to automatically start the **webscraper MCP** whenever you launch the application.
+
+#### 1. Open Claude Desktop Settings
+Go to `Claude Desktop` -> `Settings` -> `Developer` -> `Edit Config`.
+
+This will create a new configuration file if it doesn't yet exist, or open your existing one.
+
+#### 2. Configuring the Server
+Paste the following JSON configuration into the file (replacing `{path_to_the_main.py}` with your actual local path):
+
+```json
+{
+  "mcpServers": {
+    "webScraper": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "mcp",
+        "{path_to_the_main.py}"
+      ]
+    }
+  }
+}
+```
+
+#### 3. Restart Claude Desktop
+
+After saving the configuration file, you need to **completely quit** Claude Desktop and restart it. Upon restarting you should now be all setup.
+
+### 4. Using the MCP
+
+Now you can just create a new chat and if you click on the **"+" symbol** in the bottom left and then click on the **connectors** option and then you should now see the **webScraper mcp**.
+
+If you want to use the prompt that I created you can, while in the **Connectors** option, select **Add from webScraper** -> **Get url info prompt** and then just select an url.
+
 ## Project Overview
 
 In this project I used the **MCP Protocol**, in a **POC (Proof of Concept)** application, where I am using the `httpx` library to do some actions, related to a certain URL.
