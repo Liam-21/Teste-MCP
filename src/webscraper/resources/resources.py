@@ -1,6 +1,7 @@
 from common.config import MANIFEST_FILE
 import anyio
 
+# Função para registar resources, a ser chamada pelo main.py
 def register_resources(mcp):
     @mcp.resource("research://manifest")
     async def get_trusted_domains() -> str:

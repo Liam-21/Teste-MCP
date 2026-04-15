@@ -11,5 +11,5 @@ services:
       - /app/.venv
     environment:
       - PYTHONUNBUFFERED=1
-    stdin_open: true
-    tty: true
+    stdin_open: true          # | Estes dois andam de mão dada. Enquanto o stdin_open (Standard Input, mantém o stdin aberto, permitindo interações)
+    tty: true                 # |Enquanto o tty (Teletypewritter) aloca um terminal, com o stdin

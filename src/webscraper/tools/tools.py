@@ -1,6 +1,6 @@
-# from src.webscraper.main import manager
 from common.config import manager
 
+# Função para registar tools, a ser chamada pelo main.py
 def register_tools(mcp):
     @mcp.tool()
     async def post_data(data: dict):

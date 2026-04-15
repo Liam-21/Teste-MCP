@@ -1,6 +1,12 @@
-FROM python:3.14.3
+FROM python:3.12
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+WORKDIR /app
+
+COPY pyproject.toml uv.lock ./
+
+RUN uv sync --locked
 
 # Copy the project into the image
 COPY . /app
@@ -8,10 +14,6 @@ COPY . /app
 # Disable development dependencies
 ENV UV_NO_DEV=1
 
-# Sync the project into a new environment, asserting the lockfile is up to date
-WORKDIR /app
-RUN uv sync --locked
+ENV PYTHONPATH="/app/src"
 
-ENV PYTHONPATH="/app/src:${PYTHONPATH}"
-
-CMD ["uv", "run", "src/webscraper/main.py"]
+CMD ["uv", "run", "--python", "3.12", "src/webscraper/main.py"]
